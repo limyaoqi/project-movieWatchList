@@ -1,0 +1,18 @@
+movie:title,年份，类型，评价
+const movies = JSON.params(
+
+user can add movie
+
+{
+    title: "Forrest Gump",
+    year: 1994,
+    genre: "Drama, Romance",
+    rating:0,
+    description:
+        "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
+    image:"",
+    watchlist: false
+},
+popular
+watchlist
+(watchlist)
