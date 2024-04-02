@@ -127,8 +127,7 @@ export default function Home() {
         {movies.map((movie) => {
           return <PopularMovie movie={movie} />;
         })}
-        <input type="file" onChange={onChangeHandler} />
-        <img src={base64Image} alt="" />
+        
       </Container>
     </>
   );

@@ -1,9 +1,10 @@
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography, Box, Rating } from "@mui/material";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function PopularMovie({ movie }) {
+  const [r, setR] = useState(5);
   if (!movie) return <Typography variant="h2">Please Add Movie</Typography>;
-
   return (
     <Link
       to={`/popularMovie/${movie.id}`}
@@ -59,9 +60,34 @@ export default function PopularMovie({ movie }) {
             }}
           >
             <Box>
-              <Typography variant="h4" gutterBottom>
-                {movie.title}
-              </Typography>
+              <Grid
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  margin: "10px 0",
+                  alignItems: "center",
+                  textAlign: "center",
+                }}
+              >
+                <Typography variant="h4" gutterBottom>
+                  {movie.title}
+                </Typography>
+                <Typography
+                  variant="body3"
+                  sx={{
+                    backgroundColor: "black",
+                    color: "white",
+                    padding: "5px 10px",
+                    borderRadius: "10px",
+                    "@media (min-width: 900px)": {
+                      display: "none",
+                    },
+                  }}
+                >
+                  {movie.genre}
+                </Typography>
+              </Grid>
+              <Rating name="read-only" readOnly value={r}></Rating>
               <Typography variant="body1" gutterBottom>
                 {movie.description}
               </Typography>
