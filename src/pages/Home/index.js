@@ -2,6 +2,7 @@ import { useState } from "react";
 import PopularMovie from "../PopularMovie";
 import { Container } from "@mui/material";
 import { nanoid } from "nanoid";
+import Navbar from "../../components/Navbar";
 
 export default function Home() {
   let movies = JSON.parse(localStorage.getItem("Movies"));
@@ -12,6 +13,8 @@ export default function Home() {
         title: "Pulp Fiction",
         date: "1994-10-14",
         genre: ["Crime", "Drama"],
+        user_rating: 0,
+        average_rating: 4.5,
         country: "United States",
         description:
           "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
@@ -24,6 +27,8 @@ export default function Home() {
         title: "Inception",
         date: "2010-07-16",
         genre: ["Action", "Adventure", "Sci-Fi"],
+        user_rating: 0,
+        average_rating: 4.5,
         country: "United States, United Kingdom",
         description:
           "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
@@ -36,6 +41,8 @@ export default function Home() {
         title: "Forrest Gump",
         date: "1994-07-06",
         genre: ["Drama", "Romance"],
+        user_rating: 0,
+        average_rating: 4.5,
         country: "United States",
         description:
           "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
@@ -47,7 +54,9 @@ export default function Home() {
         id: nanoid(),
         title: "The Matrix",
         date: "1999-03-31",
-        genre: ["Action"," Sci-Fi"],
+        genre: ["Action", " Sci-Fi"],
+        user_rating: 0,
+        average_rating: 4.5,
         country: "United States, Australia",
         description:
           "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
@@ -60,6 +69,8 @@ export default function Home() {
         title: "The Lord of the Rings: The Return of the King",
         date: "1999-03-31",
         genre: ["Action", "Adventure", "Drama"],
+        user_rating: 0,
+        average_rating: 4.5,
         country: "United States, New Zealand",
         description:
           "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
@@ -72,6 +83,8 @@ export default function Home() {
         title: "The Shawshank Redemption",
         date: "1994-09-23",
         genre: ["Drama"],
+        user_rating: 0,
+        average_rating: 4.5,
         country: "United States",
         description:
           "Two imprisoned men bond over a number of dates, finding solace and eventual redemption through acts of common decency.",
@@ -84,6 +97,8 @@ export default function Home() {
         title: "The Godfather",
         date: "1972-03-15",
         genre: ["Crime", "Drama"],
+        user_rating: 0,
+        average_rating: 4.5,
         country: "United States",
         description:
           "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
@@ -96,6 +111,8 @@ export default function Home() {
         title: "The Dark Knight",
         date: "2008-07-18",
         genre: ["Action", "Crime", "Drama"],
+        user_rating: 0,
+        average_rating: 4.5,
         country: "United States",
         description:
           "When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
@@ -108,24 +125,12 @@ export default function Home() {
     movies = JSON.parse(localStorage.getItem("Movies"));
   }
 
-  const [base64Image, setBase64Image] = useState("");
-  const onChangeHandler = async (e) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setBase64Image(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-  // console.log(base64Image);
   return (
     <>
+      <Navbar />
       <Container>
         {movies.map((movie) => {
-          return <PopularMovie movie={movie} />;
+          return <PopularMovie movie={movie} key={movie.id} />;
         })}
       </Container>
     </>

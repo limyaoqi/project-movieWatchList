@@ -132,7 +132,15 @@ export default function EditPopularMovie() {
           boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <Typography variant="h3" gutterBottom>
+        <Typography
+          variant="h3"
+          sx={{
+            "@media (max-width: 336px)": {
+              fontSize: "32px",
+            },
+          }}
+          gutterBottom
+        >
           Edit Movie
         </Typography>
         <form onSubmit={submitHandler} style={{ width: "100%" }}>
@@ -213,8 +221,13 @@ export default function EditPopularMovie() {
                 variant="contained"
                 color="secondary"
                 component={Link}
-                to="/"
+                to={`/popularMovie/${id}`}
                 fullWidth
+                sx={{
+                  "@media (max-width: 336px)": {
+                    height: "61px",
+                  },
+                }}
               >
                 Cancel
               </Button>

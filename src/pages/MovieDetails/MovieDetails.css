@@ -1,8 +1,48 @@
-.details-loaded img {
-  opacity: 0; /* Initially hide the image */
-  transition: opacity 0.5s ease-in-out; /* Apply transition effect */
+.movieDetailsContainer {
+  height: 97vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.details-loaded img {
-  opacity: 1; /* Show the image when details are loaded */
+.movieDetails {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+}
+
+.movieImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+}
+
+.movieDetailsBox {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .movieDetailsBox {
+    overflow: scroll;
+  }
+}
+
+.movieDetailsBox2 {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  text-align: start;
+  margin: 5px 0;
 }
