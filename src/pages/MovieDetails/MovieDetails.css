@@ -1,0 +1,8 @@
+.details-loaded img {
+  opacity: 0; /* Initially hide the image */
+  transition: opacity 0.5s ease-in-out; /* Apply transition effect */
+}
+
+.details-loaded img {
+  opacity: 1; /* Show the image when details are loaded */
+}

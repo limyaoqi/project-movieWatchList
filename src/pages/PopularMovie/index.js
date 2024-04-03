@@ -66,7 +66,6 @@ export default function PopularMovie({ movie }) {
                   justifyContent: "space-between",
                   margin: "10px 0",
                   alignItems: "center",
-                  textAlign: "center",
                 }}
               >
                 <Typography variant="h4" gutterBottom>
@@ -103,13 +102,18 @@ export default function PopularMovie({ movie }) {
                 padding: "10px",
                 borderTopLeftRadius: "5px",
                 borderTopRightRadius: "5px",
+                display: "flex",
                 "@media (max-width: 900px)": {
                   borderRight: "2px solid white",
                   display: "none",
                 },
               }}
             >
-              <Typography variant="body2">{movie.genre}</Typography>
+              {movie.genre.map((g) => (
+                <Typography variant="body2" style={{ padding: "0 5px" }}>
+                  {g}
+                </Typography>
+              ))}
             </Box>
           </Box>
         </Grid>
