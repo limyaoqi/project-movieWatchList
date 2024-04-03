@@ -18,6 +18,7 @@ import AddIcon from "@mui/icons-material/Add";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import "./MovieDetails.css";
+import { BalconySharp } from "@mui/icons-material";
 
 export default function MovieDetails() {
   const { id } = useParams();
@@ -27,6 +28,7 @@ export default function MovieDetails() {
   const [rating, setRating] = useState(movie.average_rating);
   const [userRating, setUserRating] = useState(movie.user_rating);
   const [lock, setLock] = useState(true);
+  const [watchlist, setWatchList] = useState(movie.watchlist);
   console.log(movie);
   const lockHandler = () => {
     setLock(!lock);
@@ -64,6 +66,17 @@ export default function MovieDetails() {
         navigate("/");
       }
     });
+  };
+
+  const AddToWatchList = () => {
+    setWatchList(!watchlist);
+    const updateMovie = movies.map((m) => {
+      if (m.id === movie.id) {
+        return { ...m, watchlist: watchlist };
+      }
+      return m;
+    });
+    localStorage.setItem("Movies", JSON.stringify(updateMovie));
   };
 
   return (
@@ -166,10 +179,15 @@ export default function MovieDetails() {
             <Box style={{ display: "flex", justifyContent: "end" }}>
               <Button
                 variant="contained"
-                
-                startIcon={movie.watchlist ? <DoNotDisturbIcon /> : <AddIcon />}
+                style={
+                  watchlist
+                    ? { backgroundColor: "black" }
+                    : { backgroundColor: "white", color: "black" }
+                }
+                startIcon={watchlist ? <DoNotDisturbIcon /> : <AddIcon />}
+                onClick={AddToWatchList}
               >
-                hhhh
+                {watchlist ? "Add to WatchList" : "Remove movie from WatchList"}
               </Button>
             </Box>
           </Grid>
