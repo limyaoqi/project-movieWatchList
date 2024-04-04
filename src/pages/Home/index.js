@@ -14,7 +14,7 @@ import Navbar from "../../components/Navbar";
 
 export default function Home() {
   let movies = JSON.parse(localStorage.getItem("Movies"));
-  if (!movies) {
+  if (!movies || movies.length <= 0) {
     const newMovie = [
       {
         id: nanoid(),
@@ -135,7 +135,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
       <Container>
         <Typography variant="h3">All Movies</Typography>
         {movies ? (
@@ -143,6 +142,7 @@ export default function Home() {
             {movies.map((movie) => {
               return (
                 <Grid
+                  key={movie.id}
                   item
                   xs={4}
                   sx={{

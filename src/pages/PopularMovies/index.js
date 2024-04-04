@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar";
 
 export default function PopularMovies() {
   let movies = JSON.parse(localStorage.getItem("Movies"));
-  if (!movies) {
+  if (!movies || movies.length <= 0) {
     const newMovie = [
       {
         id: nanoid(),
@@ -126,7 +126,6 @@ export default function PopularMovies() {
 
   return (
     <>
-      <Navbar />
       <Container>
         {movies.map((movie) => {
           return <PopularMovie movie={movie} key={movie.id} />;

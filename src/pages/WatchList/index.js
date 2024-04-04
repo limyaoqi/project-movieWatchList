@@ -6,7 +6,6 @@ export default function WatchList() {
 
   return (
     <>
-      <Navbar />
       <Container>
         {movies.map((movie) => {
           if (movie.watchlist) {

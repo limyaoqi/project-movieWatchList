@@ -116,7 +116,6 @@ export default function AddMovie() {
 
   return (
     <>
-      <Navbar />
       <Container
         maxWidth="sm"
         sx={{

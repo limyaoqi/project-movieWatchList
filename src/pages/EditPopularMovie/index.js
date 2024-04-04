@@ -116,7 +116,6 @@ export default function EditPopularMovie() {
 
   return (
     <>
-    <Navbar />
     <Container
       maxWidth="sm"
       sx={{
