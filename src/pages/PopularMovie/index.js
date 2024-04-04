@@ -109,11 +109,11 @@ export default function PopularMovie({ movie }) {
                 },
               }}
             >
-              {movie.genre.map((g) => (
+              {/* {movie.genre.map((g) => (
                 <Typography variant="body2" style={{ padding: "0 5px" }}>
                   {g}
                 </Typography>
-              ))}
+              ))} */}
             </Box>
           </Box>
         </Grid>

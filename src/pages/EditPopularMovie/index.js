@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
+import Navbar from "../../components/Navbar";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -66,6 +67,7 @@ export default function EditPopularMovie() {
   const [country, setCountry] = useState(movie.country);
   const [description, setDescription] = useState(movie.description);
   const [image, setImage] = useState(movie.image);
+
   const onChangeHandler = (e) => {
     const file = e.target.files[0];
 
@@ -113,6 +115,8 @@ export default function EditPopularMovie() {
   };
 
   return (
+    <>
+    <Navbar />
     <Container
       maxWidth="sm"
       sx={{
@@ -246,5 +250,6 @@ export default function EditPopularMovie() {
         </form>
       </Grid>
     </Container>
+    </>
   );
 }

@@ -38,10 +38,10 @@ export default function Navbar() {
           <Button color="inherit" component={Link} to="/">
             Home
           </Button>
-          <Button color="inherit" component={Link} to="/allMovies">
-            All Movies
+          <Button color="inherit" component={Link} to="/addMovie">
+            Add Movies
           </Button>
-          <Button color="inherit" component={Link} to="/PopularMovie">
+          <Button color="inherit" component={Link} to="/PopularMovies">
             Popular
           </Button>
           <Button color="inherit" component={Link} to="/Watchlist">
