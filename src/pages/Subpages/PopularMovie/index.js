@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function PopularMovie({ movie }) {
-  const [r, setR] = useState(5);
+  const [r, setR] = useState(movie.average_rating);
   if (!movie) return <Typography variant="h2">Please Add Movie</Typography>;
   return (
     <Link
@@ -18,6 +18,7 @@ export default function PopularMovie({ movie }) {
           margin: "20px 0",
           borderRadius: "4px",
           padding: "0",
+          height: "100%",
         }}
       >
         <Grid
@@ -26,6 +27,7 @@ export default function PopularMovie({ movie }) {
           md={6}
           style={{
             padding: "0",
+            display: "flex",
           }}
         >
           <Box
@@ -86,7 +88,23 @@ export default function PopularMovie({ movie }) {
                   {movie.genre}
                 </Typography>
               </Grid>
-              <Rating name="read-only" readOnly value={r}></Rating>
+              <Box
+                style={{
+                  display: "flex",
+                  marginBottom: "10px",
+                }}
+              >
+                <Rating
+                  name="half-rating"
+                  precision={0.1}
+                  readOnly
+                  value={r}
+                  style={{ marginRight: "5px" }}
+                ></Rating>
+                <Typography variant="body1" gutterBottom fontWeight="bold">
+                  {movie.average_rating}
+                </Typography>
+              </Box>
               <Typography variant="body1" gutterBottom>
                 {movie.description}
               </Typography>

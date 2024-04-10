@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import MovieDetails from "./pages/MovieDetails";
-import AddMovie from "./pages/AddMovie";
-import EditPopularMovie from "./pages/EditPopularMovie";
-import WatchList from "./pages/WatchList";
-import PopularMovies from "./pages/PopularMovies";
+import Home from "./pages/MainPages/Home";
+import AddMovie from "./pages/MainPages/AddMovie";
+import WatchList from "./pages/MainPages/WatchList";
+import PopularMovies from "./pages/MainPages/PopularMovies";
+import MovieDetails from "./pages/Subpages/MovieDetails";
+import EditPopularMovie from "./pages/Subpages/EditPopularMovie";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 

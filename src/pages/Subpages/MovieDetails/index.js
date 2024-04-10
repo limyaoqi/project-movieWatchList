@@ -184,7 +184,7 @@ export default function MovieDetails() {
                     ? { backgroundColor: "black" }
                     : { backgroundColor: "white", color: "black" }
                 }
-                startIcon={watchlist ? <DoNotDisturbIcon /> : <AddIcon />}
+                startIcon={watchlist ? <AddIcon /> : <DoNotDisturbIcon />}
                 onClick={AddToWatchList}
               >
                 {watchlist ? "Add to WatchList" : "Remove movie from WatchList"}
@@ -195,7 +195,7 @@ export default function MovieDetails() {
 
         <IconButton
           component={Link}
-          to={"/"}
+          to={"/PopularMovies"}
           edge="end"
           style={{
             position: "absolute",
