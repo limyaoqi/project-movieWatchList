@@ -11,7 +11,7 @@ import {
 
 export default function AllMovies({ movies }) {
   return (
-    <Container>
+    <Container style={{ marginTop: "90px" }}>
       <Typography variant="h3">All Movies</Typography>
       {movies ? (
         <Grid container spacing={2}>

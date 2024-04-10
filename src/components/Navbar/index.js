@@ -1,16 +1,13 @@
 import { Link } from "react-router-dom";
-
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import { Container, IconButton, Menu } from "@mui/material";
+import { Container, IconButton, Menu, MenuItem } from "@mui/material";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 
 const pages = ["Products", "Pricing", "Blog"];
 
@@ -24,7 +21,7 @@ export default function Navbar() {
   };
 
   return (
-    <AppBar position="static" style={{ backgroundColor: "black" }}>
+    <AppBar position="fixed" style={{ backgroundColor: "black" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box

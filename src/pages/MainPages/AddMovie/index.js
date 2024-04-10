@@ -284,6 +284,7 @@ export default function AddMovie() {
           alignItems: "center",
           justifyContent: "center",
           minHeight: "90vh",
+          marginTop: "60px",
         }}
       >
         <Grid

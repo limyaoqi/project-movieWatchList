@@ -126,7 +126,7 @@ export default function PopularMovies() {
 
   return (
     <>
-      <Container>
+      <Container style={{ marginTop: "90px" }}>
         {movies.map((movie) => {
           if (movie.average_rating >= 4)
             return <PopularMovie movie={movie} key={movie.id} />;
