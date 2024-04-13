@@ -1,7 +1,6 @@
-import PopularMovie from "../../Subpages/PopularMovie";
 import { Container } from "@mui/material";
 import { nanoid } from "nanoid";
-import Navbar from "../../../components/Navbar";
+import MovieCard from "../../Subpages/MovieCard";
 
 export default function PopularMovies() {
   let movies = JSON.parse(localStorage.getItem("Movies"));
@@ -129,7 +128,7 @@ export default function PopularMovies() {
       <Container style={{ marginTop: "90px" }}>
         {movies.map((movie) => {
           if (movie.average_rating >= 4)
-            return <PopularMovie movie={movie} key={movie.id} />;
+            return <MovieCard movie={movie} key={movie.id} />;
         })}
       </Container>
     </>

@@ -2,7 +2,7 @@ import { Grid, Typography, Box, Rating } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function PopularMovie({ movie }) {
+export default function MovieCard({ movie }) {
   const [r, setR] = useState(movie.average_rating);
   if (!movie) return <Typography variant="h2">Please Add Movie</Typography>;
   return (
@@ -44,7 +44,7 @@ export default function PopularMovie({ movie }) {
               alt={movie.title}
               style={{
                 width: "100%",
-                height: "100%",
+                maxHeight: "300px",
                 objectFit: "cover",
               }}
             />
@@ -79,13 +79,15 @@ export default function PopularMovie({ movie }) {
                     backgroundColor: "black",
                     color: "white",
                     padding: "5px 10px",
+                    width: "fit-content",
+                    display: "inline-block",
                     borderRadius: "10px",
                     "@media (min-width: 900px)": {
                       display: "none",
                     },
                   }}
                 >
-                  {movie.genre}
+                  {movie.genre.join(", ")}
                 </Typography>
               </Grid>
               <Box
@@ -114,7 +116,8 @@ export default function PopularMovie({ movie }) {
                 position: "absolute",
                 bottom: 0,
                 left: 0,
-                width: "50%",
+                width: "fit-content",
+                    display: "inline-block",
                 backgroundColor: "black",
                 color: "white",
                 padding: "10px",
@@ -128,7 +131,13 @@ export default function PopularMovie({ movie }) {
               }}
             >
               {movie.genre.map((g) => (
-                <Typography variant="body2" style={{ padding: "0 5px" }}>
+                <Typography
+                  variant="body2"
+                  style={{
+                    padding: "0 5px",
+                    
+                  }}
+                >
                   {g}
                 </Typography>
               ))}

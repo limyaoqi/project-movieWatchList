@@ -9,34 +9,30 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedGenre, setSelectedGenre] = useState([]);
 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
+  const handleGenreChange = (genre) => {
+    // const isSelected = selectedGenre.includes(genre);
+
+    // if (isSelected) {
+    //   setSelectedGenre(selectedGenre.filter((g) => g !== genre));
+    // } else {
+    //   setSelectedGenre([...selectedGenre, genre]);
+    // }
+    setSelectedGenre(genre.target.value);
   };
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar
-          selectedCategory={selectedCategory}
-          onCategoryChange={handleCategoryChange}
-        />
+        <Navbar />
         <Routes>
-          <Route
-            path="/"
-            element={<Home selectedCategory={selectedCategory} />}
-          />
-          <Route
-            path="/popularMovies"
-            element={<PopularMovies selectedCategory={selectedCategory} />}
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/popularMovies" element={<PopularMovies />} />
           <Route path="/popularMovie/:id" element={<MovieDetails />} />
           <Route path="/addMovie" element={<AddMovie />} />
           <Route path="/editPopularMovie/:id" element={<EditPopularMovie />} />
-          <Route
-            path="/watchList"
-            element={<WatchList selectedCategory={selectedCategory} />}
-          />
+          <Route path="/watchList" element={<WatchList />} />
         </Routes>
       </BrowserRouter>
     </div>

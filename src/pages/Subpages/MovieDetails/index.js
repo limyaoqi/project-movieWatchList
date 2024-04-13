@@ -16,9 +16,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
 import AddIcon from "@mui/icons-material/Add";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./MovieDetails.css";
-import { BalconySharp } from "@mui/icons-material";
 
 export default function MovieDetails() {
   const { id } = useParams();
@@ -28,8 +27,7 @@ export default function MovieDetails() {
   const [rating, setRating] = useState(movie.average_rating);
   const [userRating, setUserRating] = useState(movie.user_rating);
   const [lock, setLock] = useState(true);
-  const [watchlist, setWatchList] = useState(movie.watchlist);
-  console.log(movie);
+  const [watchList, setWatchList] = useState(movie.watchlist);
   const lockHandler = () => {
     setLock(!lock);
   };
@@ -69,18 +67,29 @@ export default function MovieDetails() {
   };
 
   const AddToWatchList = () => {
-    setWatchList(!watchlist);
+
+    setWatchList(!watchList);
+   
+  };
+
+  useEffect(() => {
+    
     const updateMovie = movies.map((m) => {
       if (m.id === movie.id) {
-        return { ...m, watchlist: watchlist };
+        return { ...m, watchlist: watchList };
       }
       return m;
     });
     localStorage.setItem("Movies", JSON.stringify(updateMovie));
-  };
+}, [watchList, setWatchList, movie, movies]);
+
 
   return (
-    <Container id="movie-details-container" className="movieDetailsContainer">
+    <Container
+      id="movie-details-container"
+      className="movieDetailsContainer"
+      style={{ marginTop: "40px" }}
+    >
       <Grid container className="movieDetails">
         <img src={movie?.image} className="movieImage" alt="Movie Poster" />
         <Box className="movieDetailsBox">
@@ -180,22 +189,27 @@ export default function MovieDetails() {
               <Button
                 variant="contained"
                 style={
-                  watchlist
-                    ? { backgroundColor: "black" }
-                    : { backgroundColor: "white", color: "black" }
+                  watchList
+                    ? {
+                        backgroundColor: "white",
+                        color: "black",
+                        marginBottom: "50px",
+                      }
+                    : { backgroundColor: "black", marginBottom: "50px" }
                 }
-                startIcon={watchlist ? <AddIcon /> : <DoNotDisturbIcon />}
+                startIcon={watchList ?  <DoNotDisturbIcon />:<AddIcon /> }
                 onClick={AddToWatchList}
               >
-                {watchlist ? "Add to WatchList" : "Remove movie from WatchList"}
+                {watchList ? "Remove movie from WatchList ": "Add to WatchList"}
               </Button>
             </Box>
           </Grid>
         </Box>
 
         <IconButton
-          component={Link}
-          to={"/PopularMovies"}
+          // component={Link}
+          // to={"/PopularMovies"}
+          onClick={() => navigate(-1)}
           edge="end"
           style={{
             position: "absolute",

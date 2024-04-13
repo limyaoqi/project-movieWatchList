@@ -14,7 +14,6 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
-import Navbar from "../../../components/Navbar";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;

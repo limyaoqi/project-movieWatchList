@@ -1,2 +1,6 @@
 problem:
-1. popularmovie image size need to set
+1. when i click a add to watchlist have some problem
+2. watchlist
+3. sort button
+4. when i type in input and click swap in will have some problem
+
