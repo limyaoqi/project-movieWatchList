@@ -1,5 +1,5 @@
-import { IconButton, InputBase, Paper } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import {  InputBase, Paper } from "@mui/material";
+import { SearchButton } from "../../../components/IconButton";
 
 export default function SearchBar({ search, handleSearch }) {
   return (
@@ -27,9 +27,7 @@ export default function SearchBar({ search, handleSearch }) {
         onChange={handleSearch}
         onKeyPress={handleSearch}
       />
-      <IconButton sx={{ p: "10px" }} onClick={handleSearch}>
-        <SearchIcon style={{ color: "white" }} />
-      </IconButton>
+     <SearchButton handleSearch={handleSearch} />
     </Paper>
   );
 }

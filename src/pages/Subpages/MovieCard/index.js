@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function MovieCard({ movie }) {
-  const [r, setR] = useState(movie.average_rating);
   if (!movie) return <Typography variant="h2">Please Add Movie</Typography>;
   return (
     <Link
@@ -70,7 +69,7 @@ export default function MovieCard({ movie }) {
                   alignItems: "center",
                 }}
               >
-                <Typography variant="h4" gutterBottom>
+                <Typography variant="h4">
                   {movie.title}
                 </Typography>
                 <Typography
@@ -100,11 +99,29 @@ export default function MovieCard({ movie }) {
                   name="half-rating"
                   precision={0.1}
                   readOnly
-                  value={r}
+                  value={movie.average_rating}
                   style={{ marginRight: "5px" }}
                 ></Rating>
                 <Typography variant="body1" gutterBottom fontWeight="bold">
                   {movie.average_rating}
+                </Typography>
+              </Box>
+              <Box
+                style={{
+                  display: "flex",
+                  marginBottom: "10px",
+                }}
+              >
+                <Rating
+                  name="half-rating"
+                  precision={0.1}
+                  readOnly
+                  value={movie.user_rating}
+                  style={{ marginRight: "5px" }}
+                  
+                ></Rating>
+                <Typography variant="body1" gutterBottom fontWeight="bold">
+                  {movie.user_rating}
                 </Typography>
               </Box>
               <Typography variant="body1" gutterBottom>

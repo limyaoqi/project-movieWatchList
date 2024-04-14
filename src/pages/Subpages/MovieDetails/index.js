@@ -3,21 +3,21 @@ import {
   Button,
   Container,
   Grid,
-  IconButton,
   Rating,
   Typography,
 } from "@mui/material";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { useNavigate, useParams } from "react-router-dom";
 import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
 import AddIcon from "@mui/icons-material/Add";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import "./MovieDetails.css";
+import {
+  DeleteButton,
+  EditButton,
+  GoBackButton,
+  LockButton,
+} from "../../../components/IconButton";
 
 export default function MovieDetails() {
   const { id } = useParams();
@@ -67,13 +67,10 @@ export default function MovieDetails() {
   };
 
   const AddToWatchList = () => {
-
     setWatchList(!watchList);
-   
   };
 
   useEffect(() => {
-    
     const updateMovie = movies.map((m) => {
       if (m.id === movie.id) {
         return { ...m, watchlist: watchList };
@@ -81,8 +78,7 @@ export default function MovieDetails() {
       return m;
     });
     localStorage.setItem("Movies", JSON.stringify(updateMovie));
-}, [watchList, setWatchList, movie, movies]);
-
+  }, [watchList, setWatchList, movie, movies]);
 
   return (
     <Container
@@ -106,7 +102,7 @@ export default function MovieDetails() {
                 margin: "5px 0",
               }}
               sx={{
-                "@media (min-width: 321px)": {
+                "@media (min-width: 425px)": {
                   fontWeight: "bolder",
                 },
               }}
@@ -117,6 +113,12 @@ export default function MovieDetails() {
               variant="h6"
               style={{
                 margin: "5px 0",
+              }}
+              sx={{
+                "@media (max-width: 425px)": {
+                  maxWidth: "192px",
+                  display: "block",
+                },
               }}
             >
               Release Date : {movie.date}
@@ -139,16 +141,15 @@ export default function MovieDetails() {
             </Typography>
 
             <Box
-              style={{
+              sx={{
                 display: "flex",
                 justifyContent: "start",
                 alignItems: "center",
                 textAlign: "start",
                 margin: "5px 0",
-              }}
-              sx={{
-                "@media (max-width: 321px)": {
+                "@media (max-width: 425px)": {
                   maxWidth: "192px",
+                  display: "block",
                 },
               }}
             >
@@ -159,22 +160,39 @@ export default function MovieDetails() {
                 readOnly
                 value={rating}
               ></Rating>
-              <IconButton style={{ display: "none" }}>
-                <LockOpenOutlinedIcon />
-              </IconButton>
             </Box>
-            <Box className="movieDetailsBox2">
+            <Box
+              className="movieDetailsBox2"
+              sx={{
+                display: "flex",
+                justifyContent: "start",
+                alignItems: "center",
+                textAlign: "start",
+                margin: "5px 0",
+                "@media (max-width: 425px)": {
+                  maxWidth: "192px",
+                  display: "block",
+                },
+              }}
+            >
               <Typography variant="h6">User Rating:</Typography>
-              <Rating
-                name="half-rating"
-                precision={0.5}
-                value={userRating}
-                readOnly={lock}
-                onChange={changeRatingHandler}
-              ></Rating>
-              <IconButton onClick={lockHandler} style={{ color: "white" }}>
-                {lock ? <LockOutlinedIcon /> : <LockOpenOutlinedIcon />}
-              </IconButton>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  alignItems: "center",
+                  textAlign: "start",
+                }}
+              >
+                <Rating
+                  name="half-rating"
+                  precision={0.5}
+                  value={userRating}
+                  readOnly={lock}
+                  onChange={changeRatingHandler}
+                ></Rating>
+                <LockButton lock={lock} lockHandler={lockHandler} />
+              </Box>
             </Box>
 
             <Typography
@@ -197,54 +215,21 @@ export default function MovieDetails() {
                       }
                     : { backgroundColor: "black", marginBottom: "50px" }
                 }
-                startIcon={watchList ?  <DoNotDisturbIcon />:<AddIcon /> }
+                startIcon={watchList ? <DoNotDisturbIcon /> : <AddIcon />}
                 onClick={AddToWatchList}
               >
-                {watchList ? "Remove movie from WatchList ": "Add to WatchList"}
+                {watchList
+                  ? "Remove movie from WatchList "
+                  : "Add to WatchList"}
               </Button>
             </Box>
           </Grid>
         </Box>
 
-        <IconButton
-          // component={Link}
-          // to={"/PopularMovies"}
-          onClick={() => navigate(-1)}
-          edge="end"
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            color: "white",
-            backgroundColor: "black",
-          }}
-        >
-          <ArrowBackIosNewIcon />
-        </IconButton>
+        <GoBackButton />
         <Grid style={{ position: "absolute", bottom: 0, right: 0 }}>
-          <IconButton
-            component={Link}
-            to={`/editPopularMovie/${movie.id}`}
-            edge="end"
-            style={{
-              color: "blue",
-              backgroundColor: "white",
-              marginRight: "10px",
-            }}
-          >
-            <EditIcon style={{ width: "37px", height: "37px" }} />
-          </IconButton>
-          <IconButton
-            edge="end"
-            style={{
-              color: "red",
-              backgroundColor: "white",
-              marginLeft: "10px",
-            }}
-            onClick={deleteHandler}
-          >
-            <DeleteIcon style={{ width: "37px", height: "37px" }} />
-          </IconButton>
+          <EditButton movie={movie} />
+          <DeleteButton deleteHandler={deleteHandler} />
         </Grid>
       </Grid>
     </Container>

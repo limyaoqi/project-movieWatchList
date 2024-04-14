@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useState } from "react";
-import MenuIcon from "@mui/icons-material/Menu";
+import { MenuButton } from "../IconButton";
 
 export default function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -141,16 +141,7 @@ export default function Navbar() {
                   justifyContent: "flex-end",
                 }}
               >
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleOpenNavMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
+                <MenuButton handleOpenNavMenu={handleOpenNavMenu} />
                 <Menu
                   id="menu-appbar"
                   anchorEl={anchorElNav}
