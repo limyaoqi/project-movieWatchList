@@ -11,7 +11,12 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export function NoMoviesFoundMessage({ mode, selectedGenre, search }) {
+export function NoMoviesFoundMessage({
+  watchList,
+  mode,
+  selectedGenre,
+  search,
+}) {
   return (
     <>
       {mode ? (
@@ -293,23 +298,37 @@ export function DefaultMovies({ movies }) {
   );
 }
 
-export function NoAnyMovie() {
+export function NoAnyMovie({watchList}) {
   return (
     <Card>
       <Typography variant="h5" sx={{ padding: "10px" }}>
         No movie added yet
       </Typography>
-      <CardActions>
-        <Button
-          component={Link}
-          to="/addMovie"
-          variant="contained"
-          color="primary"
-          sx={{ borderRadius: "20px" }}
-        >
-          Add New Movie
-        </Button>
-      </CardActions>
+      {watchList ? (
+        <CardActions>
+          <Button
+            component={Link}
+            to="/"
+            variant="contained"
+            color="primary"
+            sx={{ borderRadius: "20px" }}
+          >
+            Add Movie to watchlist
+          </Button>
+        </CardActions>
+      ) : (
+        <CardActions>
+          <Button
+            component={Link}
+            to="/addMovie"
+            variant="contained"
+            color="primary"
+            sx={{ borderRadius: "20px" }}
+          >
+            Add New Movie
+          </Button>
+        </CardActions>
+      )}
     </Card>
   );
 }

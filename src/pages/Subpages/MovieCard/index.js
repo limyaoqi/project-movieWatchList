@@ -1,9 +1,18 @@
-import { Grid, Typography, Box, Rating } from "@mui/material";
+import { Grid, Typography, Box, Rating, Tooltip } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function MovieCard({ movie }) {
   if (!movie) return <Typography variant="h2">Please Add Movie</Typography>;
+  const truncatedTitle =
+    movie.title.length > 25
+      ? movie.title.substring(0, movie.title.lastIndexOf(" ", 25)) + "..."
+      : movie.title;
+
+  const truncatedDescription =
+    movie.description.length > 150
+      ? `${movie.description.substring(0, 150)}...`
+      : movie.description;
   return (
     <Link
       to={`/popularMovie/${movie.id}`}
@@ -32,7 +41,7 @@ export default function MovieCard({ movie }) {
           <Box
             sx={{
               width: "100%",
-              height: "100%",
+              maxHeight: "300px",
               borderTopLeftRadius: "4px",
               borderBottomLeftRadius: "4px",
               overflow: "hidden",
@@ -43,7 +52,7 @@ export default function MovieCard({ movie }) {
               alt={movie.title}
               style={{
                 width: "100%",
-                maxHeight: "300px",
+                height: "100%",
                 objectFit: "cover",
               }}
             />
@@ -69,9 +78,11 @@ export default function MovieCard({ movie }) {
                   alignItems: "center",
                 }}
               >
-                <Typography variant="h4">
-                  {movie.title}
-                </Typography>
+                <Tooltip title={movie.title} arrow>
+                  <Typography variant="h4" gutterBottom>
+                    {truncatedTitle}
+                  </Typography>
+                </Tooltip>
                 <Typography
                   variant="body3"
                   sx={{
@@ -118,14 +129,13 @@ export default function MovieCard({ movie }) {
                   readOnly
                   value={movie.user_rating}
                   style={{ marginRight: "5px" }}
-                  
                 ></Rating>
                 <Typography variant="body1" gutterBottom fontWeight="bold">
                   {movie.user_rating}
                 </Typography>
               </Box>
               <Typography variant="body1" gutterBottom>
-                {movie.description}
+                {truncatedDescription}
               </Typography>
             </Box>
             <Box
@@ -134,7 +144,7 @@ export default function MovieCard({ movie }) {
                 bottom: 0,
                 left: 0,
                 width: "fit-content",
-                    display: "inline-block",
+                display: "inline-block",
                 backgroundColor: "black",
                 color: "white",
                 padding: "10px",
@@ -149,10 +159,10 @@ export default function MovieCard({ movie }) {
             >
               {movie.genre.map((g) => (
                 <Typography
+                  key={g}
                   variant="body2"
                   style={{
                     padding: "0 5px",
-                    
                   }}
                 >
                   {g}

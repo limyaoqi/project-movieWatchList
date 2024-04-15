@@ -38,18 +38,20 @@ export default function AllMovies({ movies }) {
   };
 
   useEffect(() => {
-    const filteredMovies = movies.filter((movie) =>
-      movie.title.toLowerCase().startsWith(search.toLowerCase())
-    );
-    setDisplayMovie(filteredMovies);
-    const otherMovie = movies.filter((movie) =>
-      movie.title.toLowerCase().includes(search.toLowerCase())
-    );
-    setMaybeMovie(otherMovie);
+    if (movies) {
+      const filteredMovies = movies.filter((movie) =>
+        movie.title.toLowerCase().startsWith(search.toLowerCase())
+      );
+      setDisplayMovie(filteredMovies);
+      const otherMovie = movies.filter((movie) =>
+        movie.title.toLowerCase().includes(search.toLowerCase())
+      );
+      setMaybeMovie(otherMovie);
+    }
   }, [search, movies]);
 
   useEffect(() => {
-    if (selectedGenre.length > 0 && mode === false) {
+    if (selectedGenre.length > 0 && mode === false && movies) {
       const resultMovie = movies.filter((movie) =>
         selectedGenre.every((genre) => movie.genre.includes(genre))
       );

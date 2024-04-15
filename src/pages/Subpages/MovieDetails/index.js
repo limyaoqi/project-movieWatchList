@@ -219,7 +219,7 @@ export default function MovieDetails() {
                 onClick={AddToWatchList}
               >
                 {watchList
-                  ? "Remove movie from WatchList "
+                  ? "Remove from WatchList "
                   : "Add to WatchList"}
               </Button>
             </Box>
