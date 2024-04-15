@@ -1,6 +1,7 @@
 import { Container } from "@mui/material";
 import { nanoid } from "nanoid";
 import MovieCard from "../../Subpages/MovieCard";
+import { useState } from "react";
 
 export default function PopularMovies() {
   let movies = JSON.parse(localStorage.getItem("Movies"));
@@ -122,6 +123,8 @@ export default function PopularMovies() {
     localStorage.setItem("Movies", JSON.stringify(newMovie));
     movies = JSON.parse(localStorage.getItem("Movies"));
   }
+
+  
 
   return (
     <>

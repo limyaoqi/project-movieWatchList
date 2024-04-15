@@ -14,7 +14,6 @@ import {
   import { useTheme } from "@mui/material/styles";
   import { MenuProps, genres, getStyles } from "./formFunction";
   import { Link, useParams } from "react-router-dom";
-  import { useState } from "react";
   
   export default function Form({
     addMovie,

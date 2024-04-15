@@ -1,9 +1,9 @@
 import { Grid, Typography, Box, Rating, Tooltip } from "@mui/material";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function MovieCard({ movie }) {
   if (!movie) return <Typography variant="h2">Please Add Movie</Typography>;
+ 
   const truncatedTitle =
     movie.title.length > 25
       ? movie.title.substring(0, movie.title.lastIndexOf(" ", 25)) + "..."
