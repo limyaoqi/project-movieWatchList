@@ -33,14 +33,15 @@ export default function MovieDetails() {
   };
 
   const changeRatingHandler = (e) => {
-    setUserRating(e.target.value);
-    const updateMovie = movies.map((m) => {
+    const newUserRating = e.target.value; 
+    setUserRating(newUserRating); 
+    const updatedMovies = movies.map((m) => {
       if (m.id === movie.id) {
-        return { ...m, user_rating: userRating };
+        return { ...m, user_rating: newUserRating }; 
       }
       return m;
     });
-    localStorage.setItem("Movies", JSON.stringify(updateMovie));
+    localStorage.setItem("Movies", JSON.stringify(updatedMovies));
   };
 
   const deleteHandler = () => {
