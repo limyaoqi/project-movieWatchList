@@ -131,7 +131,7 @@ export default function MovieCard({ movie }) {
                   style={{ marginRight: "5px" }}
                 ></Rating>
                 <Typography variant="body1" gutterBottom fontWeight="bold">
-                  {movie.user_rating}
+                  {movie.user_rating ? movie.user_rating  : 0}
                 </Typography>
               </Box>
               <Typography variant="body1" gutterBottom>

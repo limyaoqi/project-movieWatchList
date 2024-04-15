@@ -26,8 +26,10 @@ export default function AllMovies({ movies }) {
     setMode(!mode);
     if (mode) {
       setSelectedGenre([]);
+      setDisplayMovie(movies)
     } else {
       setSearch("");
+      setDisplayMovie(movies)
       localStorage.removeItem("search");
     }
   };

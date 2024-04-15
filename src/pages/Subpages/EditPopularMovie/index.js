@@ -75,7 +75,7 @@ export default function EditPopularMovie() {
       description={description}
       onChangeTitle={(e) => setTitle(e.target.value)}
       onChangeDate={(e) => setDate(e.target.value)}
-      onChangeGenre={(e) => setGenre(Array.isArray(e) ? e : [e.target.value])} // Corrected to handle both single and multiple selections
+      onChangeGenre={(e) => setGenre(e.target.value)}
       onChangeCountry={(e) => setCountry(e.target.value)}
       onChangeRating={(e) => setRating(e.target.value)}
       onChangeDescription={(e) => setDescription(e.target.value)}
